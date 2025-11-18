@@ -13,6 +13,18 @@ def get_db_conn():
         database=os.environ.get('DB_NAME') or 'postgres',
     )
 
+conn = get_db_conn()
+cur = conn.cursor()
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS tasks (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR NOT NULL,
+        done BOOLEAN NOT NULL DEFAULT false
+    );
+""")
+conn.commit()
+cur.close()
+conn.close()
 
 @app.route('/', methods=['GET'])
 def index():
