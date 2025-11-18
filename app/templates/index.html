@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiter To‑Do (Flask)</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Hiter To‑Do</h1>
+
+
+<form action="/add" method="post" class="add-form">
+<input name="title" placeholder="Nova naloga..." required>
+<button type="submit">Dodaj</button>
+</form>
+
+
+<ul class="tasks">
+{% for task in tasks %}
+<li class="task {% if task.done %}done{% endif %}">
+<form action="/toggle/{{ task.id }}" method="post" class="inline">
+<button class="small" title="Označi/odznaki">{% if task.done %}↺{% else %}✓{% endif %}</button>
+</form>
+
+
+<span class="title">{{ task.title }}</span>
+
+
+<form action="/delete/{{ task.id }}" method="post" class="inline">
+<button class="small danger" title="Izbriši">✕</button>
+</form>
+</li>
+{% else %}
+<li class="empty">Ni nalog — dodaj prvo!</li>
+{% endfor %}
+</ul>
+</div>
+</body>
+</html>
