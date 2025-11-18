@@ -6,7 +6,7 @@ Auto deployment scripts for Vagrant and Cloud-Init
 ### MacOS (Apple Silicon)
 
 Install qemu
-``bash
+```bash
 brew install qemu
 ```
 
@@ -18,4 +18,13 @@ vagrant plugin install vagrant-qemu
 Deploy
 ```bash
 vagrant up --provider qemu
+```
+
+### Windows
+
+Install VirtualBox
+
+Deploy
+```bash
+vagrant up
 ```

@@ -13,12 +13,12 @@ pip install -r requirements.txt
 cat << EOF > /etc/init.d/todoapp
 #!/sbin/openrc-run
 name="todoapp"
-
 command="/home/vagrant/app/.venv/bin/python"
 command_args="/home/vagrant/app/app.py"
-
 command_background="yes"
-pidfile="/run/${RC_SVCNAME}.pid"
+pidfile="/run/todoapp.pid"
+output_log="/var/log/todoapp.log"
+error_log="/var/log/todoapp.err"
 EOF
 
 chmod +x /etc/init.d/todoapp
