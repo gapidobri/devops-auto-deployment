@@ -15,6 +15,12 @@ Vagrant.configure("2") do |config|
   config.vm.box = "generic/alpine318"
   config.vm.box_version = "4.3.12"
 
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
+
+  config.vm.provision "file", source: "./app", destination: "/home/vagrant/app"
+
+  # run setup shell script
+  config.vm.provision "shell", path: "scripts/setup.sh"
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
