@@ -17,7 +17,6 @@ Vagrant.configure("2") do |config|
 	qemu.memory = "512M"
   end
 
-
   # Install Postgres
   config.vm.provision "shell", path: "scripts/install-postgres.sh"
 
