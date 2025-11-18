@@ -1,7 +1,10 @@
-#!/bin/bash
+cd /home/vagrant/app
 
 apk add python3 py3-pip
 
-pip install -r /home/vagrant/app/requirements.txt
+python3 -m venv .venv
+. .venv/bin/activate
 
-python3 /home/vagrant/app/app.py
+pip install -r requirements.txt
+
+nohup python3 app.py >/dev/null 2>&1 &
