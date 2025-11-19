@@ -12,6 +12,9 @@ tar -zxvf /tmp/grafana.tar.gz -C /tmp
 
 mv /tmp/grafana-12.2.1 /usr/local/grafana
 
+rm -rf /usr/local/grafana/conf/provisioning
+mv /tmp/provisioning /usr/local/grafana/conf
+
 cat << EOF > /etc/init.d/grafana
 #!/sbin/openrc-run
 name="grafana"

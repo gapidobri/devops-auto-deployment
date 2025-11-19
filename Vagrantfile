@@ -7,27 +7,33 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # Install Postgres
-  config.vm.provision "shell", path: "scripts/install-postgres.sh"
+  config.vm.provision "shell", name: "install-postgres", path: "scripts/install-postgres.sh"
 
   # Install App
-  config.vm.provision "file", source: "./app", destination: "/home/vagrant/app"
+  config.vm.provision "file", source: "app", destination: "/home/vagrant/app"
 
-  config.vm.provision "shell", path: "scripts/install-app.sh"
+  config.vm.provision "shell", name: "install-app", path: "scripts/install-app.sh"
 
   # Install Nginx
   config.vm.provision "file", source: "configs/nginx.conf", destination: "/tmp/nginx.conf"
 
-  config.vm.provision "shell", path: "scripts/install-nginx.sh"
+  config.vm.provision "shell", name:"install-nginx", path: "scripts/install-nginx.sh"
 
-  config.vm.network "forwarded_port", guest: 5000, host: 5050
+  config.vm.network "forwarded_port", guest: 80, host: 80
 
   # Install Grafana
-  config.vm.provision "shell", path: "scripts/install-grafana.sh"
+  config.vm.provision "file", source: "configs/grafana/provisioning", destination: "/tmp/provisioning"
 
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.provision "shell", name: "install-grafana", path: "scripts/install-grafana.sh"
 
   # Install Loki
   config.vm.provision "file", source: "configs/loki-config.yaml", destination: "/tmp/loki-config.yaml"
 
-  config.vm.provision "shell", path: "scripts/install-loki.sh"
+  config.vm.provision "shell", name: "install-loki", path: "scripts/install-loki.sh"
+
+  # Install Alloy
+  config.vm.provision "file", source: "configs/config.alloy", destination: "/tmp/config.alloy"
+
+  config.vm.provision "shell", name: "install-alloy", path: "scripts/install-alloy.sh"
+
 end
