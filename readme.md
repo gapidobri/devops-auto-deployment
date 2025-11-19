@@ -1,7 +1,7 @@
 # DevOps Auto Deployment
 Auto deployment scripts for Vagrant and Cloud-Init
 
-## Installation
+## Deployment with Vagrant
 
 ### MacOS (Apple Silicon)
 
@@ -28,3 +28,7 @@ Deploy
 ```bash
 vagrant up
 ```
+
+## Deployment with Cloud-init
+
+TODO
