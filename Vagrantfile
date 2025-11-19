@@ -15,6 +15,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/install-app.sh"
 
   # Install Nginx
+  config.vm.provision "file", source: "configs/nginx.conf", destination: "/tmp/nginx.conf"
+
   config.vm.provision "shell", path: "scripts/install-nginx.sh"
 
   config.vm.network "forwarded_port", guest: 5000, host: 5050
@@ -24,4 +26,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
+  # Install Loki
+  config.vm.provision "file", source: "configs/loki-config.yaml", destination: "/tmp/loki-config.yaml"
+
+  config.vm.provision "shell", path: "scripts/install-loki.sh"
 end
