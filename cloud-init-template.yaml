@@ -1,0 +1,113 @@
+#cloud-config
+
+write_files:
+  # Postgres
+  - path: /run/install-postgres.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-postgres.sh%%
+
+  # App
+  - path: /run/install-app.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-app.sh%%
+
+  - path: /tmp/app/app.py
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%app/app.py%%
+
+  - path: /tmp/app/static/style.css
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%app/static/style.css%%
+
+  - path: /tmp/app/requirements.txt
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%app/requirements.txt%%
+
+  - path: /tmp/app/templates/index.html
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%app/templates/index.html%%
+
+  # Nginx
+  - path: /run/install-nginx.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-nginx.sh%%
+
+  - path: /tmp/nginx.conf
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/nginx-public.conf%%
+
+  # Grafana
+  - path: /run/install-grafana.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-grafana.sh%%
+
+  - path: /tmp/provisioning/dashboards/dashboard.json
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/grafana/provisioning/dashboards/dashboard.json%%
+
+  - path: /tmp/provisioning/dashboards/default.yaml
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/grafana/provisioning/dashboards/default.yaml%%
+
+  - path: /tmp/provisioning/datasources/datasources.yaml
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/grafana/provisioning/datasources/datasources.yaml%%
+
+  # Loki
+  - path: /run/install-loki.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-loki.sh%%
+
+  - path: /tmp/loki-config.yaml
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/loki-config.yaml%%
+
+  # Alloy
+  - path: /run/install-alloy.sh
+    owner: root:root
+    permissions: "0755"
+    encoding: b64
+    content: %%scripts/install-alloy.sh%%
+
+  - path: /tmp/config.alloy
+    owner: root:root
+    permissions: "0644"
+    encoding: b64
+    content: %%configs/config.alloy%%
+
+runcmd:
+  - setup-dns 1.1.1.1
+  - /run/install-postgres.sh
+  - /run/install-app.sh
+  - /run/install-nginx.sh
+  - /run/install-grafana.sh
+  - /run/install-loki.sh
+  - /run/install-alloy.sh

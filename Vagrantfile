@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", name: "install-postgres", path: "scripts/install-postgres.sh"
 
   # Install App
-  config.vm.provision "file", source: "app", destination: "/home/vagrant/app"
+  config.vm.provision "file", source: "app", destination: "/tmp/app"
 
   config.vm.provision "shell", name: "install-app", path: "scripts/install-app.sh"
 

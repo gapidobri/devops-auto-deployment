@@ -1,6 +1,8 @@
-cd /home/vagrant/app
-
 apk add python3 py3-pip
+
+mv /tmp/app /usr/local/app
+
+cd /usr/local/app
 
 # remove host venv
 rm -rf .venv
@@ -13,8 +15,8 @@ pip install -r requirements.txt
 cat << EOF > /etc/init.d/todoapp
 #!/sbin/openrc-run
 name="todoapp"
-command="/home/vagrant/app/.venv/bin/python"
-command_args="/home/vagrant/app/app.py"
+command="/usr/local/app/.venv/bin/python"
+command_args="/usr/local/app/app.py"
 command_background="yes"
 pidfile="/run/todoapp.pid"
 output_log="/var/log/todoapp.log"
