@@ -14,9 +14,9 @@ This repository contains scripts for deploying a simple to-do app written in Fla
 The app is written in Python and uses Flask as the framework.
 It supports adding new to-do items, marking them complete and deleting them.
 
-It is accessible on `app.localhost` in vagrant deployment and `app.devops.gapi.me` in cloud-init deployment.
+It is accessible on http://app.localhost in vagrant deployment and http://app.devops.gapi.me in cloud-init deployment.
 
-![](assets/app-demo.mp4)
+<video src="assets/app-demo.mp4" controls preload></video>
 
 ### Nginx
 Nginx is a reverse proxy that handles routing traffic to all other services.
@@ -24,7 +24,7 @@ Nginx is a reverse proxy that handles routing traffic to all other services.
 ### Alloy
 Alloy reads the app logs from a file every 5 seconds and sends them to Loki.
 
-Its dashboard is accessible on `alloy.localhost` in vagrant deployment and `alloy.devops.gapi.me` in cloud-init deployment.
+Its dashboard is accessible on http://alloy.localhost in vagrant deployment and http://alloy.devops.gapi.me in cloud-init deployment.
 
 ### Loki
 Loki stores logs in its database.
@@ -32,7 +32,7 @@ Loki stores logs in its database.
 ### Grafana
 Grafana queries logs from Loki and displays them in a dashboard.
 
-It is accessible on `grafana.localhost` in vagrant deployment and `grafana.devops.gapi.me` in cloud-init deployment.
+It is accessible on http://grafana.localhost in vagrant deployment and http://grafana.devops.gapi.me in cloud-init deployment.
 
 ![](assets/grafana-demo.png)
 
@@ -48,7 +48,7 @@ For Cloud-Init a helper script is used to embed the configuration files into one
 
 ### Vagrant
 
-![](assets/vagrant-deployment.mp4)
+<video src="assets/vagrant-deployment.mp4" controls preload></video>
 
 #### MacOS (Apple Silicon)
 
@@ -79,7 +79,7 @@ vagrant up
 
 ### Cloud-Init
 
-![](assets/cloud-init-deployment.mp4)
+<video src="assets/cloud-init-deployment.mp4" controls preload></video>
 
 Run `gen-cloud-init.sh` script that generates a full cloud init configuration from the template.
 The script encodes required files into base64 and inserts them into the generated configuration.
