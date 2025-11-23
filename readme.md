@@ -16,7 +16,7 @@ It supports adding new to-do items, marking them complete and deleting them.
 
 It is accessible on http://app.localhost in vagrant deployment and http://app.devops.gapi.me in cloud-init deployment.
 
-<video src="assets/app-demo.mp4" controls preload></video>
+https://github.com/user-attachments/assets/0a418ecb-2488-4a0b-913b-510efbaeedc2
 
 ### Nginx
 Nginx is a reverse proxy that handles routing traffic to all other services.
@@ -48,7 +48,7 @@ For Cloud-Init a helper script is used to embed the configuration files into one
 
 ### Vagrant
 
-<video src="assets/vagrant-deployment.mp4" controls preload></video>
+https://github.com/user-attachments/assets/a3a475ba-f803-464a-85eb-4fdb669e21b4
 
 #### MacOS (Apple Silicon)
 
@@ -79,7 +79,7 @@ vagrant up
 
 ### Cloud-Init
 
-<video src="assets/cloud-init-deployment.mp4" controls preload></video>
+https://github.com/user-attachments/assets/40fdb4cf-0019-4380-ad5a-d6aa1e1fd3c4
 
 Run `gen-cloud-init.sh` script that generates a full cloud init configuration from the template.
 The script encodes required files into base64 and inserts them into the generated configuration.
